@@ -11,7 +11,7 @@ namespace IndianStatesCensusAnalyzer
     {
         public enum Country
         {
-            INDIA,
+            INDIA
         }
         Dictionary<string, CensusDTO> dataMap;
         public Dictionary<string, CensusDTO> LoadCensusData(Country country, string csvFilePath, string dataHeaders)

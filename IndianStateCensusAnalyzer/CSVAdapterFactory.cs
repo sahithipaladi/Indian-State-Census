@@ -13,6 +13,7 @@ namespace IndianStatesCensusAnalyzer
         {
             try
             {
+                //Switch statement for India and other countries
                 switch (country)
                 {
                     case (CensusAnalyser.Country.INDIA):

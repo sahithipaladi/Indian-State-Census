@@ -12,6 +12,7 @@ namespace IndianStatesCensusAnalyzer
     {
         string[] censusData;
         Dictionary<string, CensusDTO> datamap;
+
         public Dictionary<string, CensusDTO> LoadCensusData(string csvFilePath, string dataHeaders)
         {
             try
@@ -20,11 +21,13 @@ namespace IndianStatesCensusAnalyzer
                 censusData = GetCensusData(csvFilePath, dataHeaders);
                 foreach (string data in censusData.Skip(1))
                 {
+                    //Checking the delimiter
                     if (!data.Contains(","))
                     {
                         throw new CensusAnalyserException("File Contains Wrong Delimiter", CensusAnalyserException.ExceptionType.INCORRECT_DELIMITER);
                     }
                     string[] coloumn = data.Split(',');
+                    //Checking the csv files
                     if (csvFilePath.Contains("IndiaStateCode.csv"))
                         datamap.Add(coloumn[1], new CensusDTO(new StateCodeDataDAO(coloumn[0], coloumn[1], coloumn[2], coloumn[3])));
                     if (csvFilePath.Contains("IndiaStateCensusData.csv"))
